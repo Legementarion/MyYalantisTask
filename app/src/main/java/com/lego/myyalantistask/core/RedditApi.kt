@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface RedditApi {
 
     @GET("/top.json")
-    fun getTopNews(@Query("count") count: Int): Observable<Result>
+    fun getTopNews(@Query("limit") count: Int): Observable<Result>
 
 }

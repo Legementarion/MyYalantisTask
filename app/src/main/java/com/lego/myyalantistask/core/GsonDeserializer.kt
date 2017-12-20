@@ -9,7 +9,7 @@ class GsonDeserializer: JsonDeserializer<Result> {
 
     @Throws(JsonParseException::class)
     override fun deserialize(je: JsonElement, type: Type, jdc: JsonDeserializationContext): Result {
-        var mappings = JsonObject()
+        val mappings = JsonObject()
         val data = je.asJsonObject.get("data")
         val children = data.asJsonObject.get("children")
         val newData = JsonArray()

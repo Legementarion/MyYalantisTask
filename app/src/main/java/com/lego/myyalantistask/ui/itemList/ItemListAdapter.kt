@@ -16,8 +16,9 @@ import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
 import com.lego.myyalantistask.MainApp
 import javax.inject.Named
+import android.text.format.DateUtils
 
-class ItemListAdapter(@Named("serverUrl") private val redditUrl: String, val context: Context) : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
+class ItemListAdapter(@Named("serverUrl") private val redditUrl: String, private val context: Context) : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
 
     private var items: List<News> = Collections.emptyList()
 
@@ -34,17 +35,16 @@ class ItemListAdapter(@Named("serverUrl") private val redditUrl: String, val con
         val item = items[position]
 
         if (item.thumbnail != "") {
-            Glide
-                    .with(context)
+            Glide.with(context)
                     .load(item.thumbnail)
                     .apply(centerCropTransform()
-                            .error(R.drawable.reddit_logo))
+                    .error(R.drawable.reddit_logo))
                     .into(holder.thumbnail)
         }
 
         with(holder.container) {
             holder.title.text = item.title
-            holder.created.text = getTimeAgo(item.created)
+            holder.created.text = DateUtils.getRelativeTimeSpanString(item.created * 1000L, Date().time, 1L)
             holder.subreddit.text = item.subreddit
             holder.text.text = item.text
             holder.author.text = item.author
@@ -62,11 +62,6 @@ class ItemListAdapter(@Named("serverUrl") private val redditUrl: String, val con
 
     override fun getItemCount(): Int {
         return items.size
-    }
-
-    private fun getTimeAgo(created: Long): String {
-        Date().after(Date(created)).toString()
-        return ""
     }
 
     fun addAll(list: List<News>) {

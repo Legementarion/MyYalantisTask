@@ -38,47 +38,54 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="@dimen/margin_custom"
                 android:layout_marginStart="@dimen/margin_custom"
                 android:layout_marginTop="@dimen/margin_custom"
-                android:text="title"
+                app:layout_constraintBottom_toTopOf="@+id/subreddit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/thumbnail"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/subreddit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="@dimen/margin_custom"
                 android:layout_marginStart="@dimen/margin_custom"
                 android:layout_marginTop="@dimen/margin_custom"
-                android:text="subreddit"
+                app:layout_constraintBottom_toTopOf="@+id/text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/thumbnail"
                 app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <TextView
                 android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/margin_custom"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="@dimen/margin_custom"
-                android:text="text"
+                android:ellipsize="end"
+                android:maxLines="4"
+                app:layout_constraintBottom_toTopOf="@+id/commentsField"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/thumbnail"
                 app:layout_constraintTop_toBottomOf="@+id/subreddit" />
 
             <TextView
                 android:id="@+id/created"
-                android:layout_width="wrap_content"
+                style="@style/SmallText"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginEnd="@dimen/margin_custom"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="@dimen/margin_custom"
-                android:text="created"
+                android:maxLines="1"
                 app:layout_constraintBottom_toTopOf="@+id/thumbnail"
                 app:layout_constraintEnd_toStartOf="@+id/title"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,76 +93,72 @@
 
             <TextView
                 android:id="@+id/authorLabel"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginStart="@dimen/margin_custom"
-                android:layout_marginTop="@dimen/margin_custom"
                 android:text="@string/author_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/authorField"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/authorField"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="@dimen/margin_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ratingLabel"
-                app:layout_constraintStart_toEndOf="@+id/authorLabel"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toEndOf="@+id/authorLabel" />
 
             <TextView
                 android:id="@+id/ratingLabel"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/margin_custom"
                 android:text="@string/rating_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/scoreField"
-                app:layout_constraintStart_toEndOf="@+id/authorField"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toEndOf="@+id/authorField" />
 
             <TextView
                 android:id="@+id/scoreField"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginEnd="@dimen/margin_custom"
-                android:layout_marginTop="@dimen/margin_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/commentsLabel"
-                app:layout_constraintStart_toEndOf="@+id/ratingLabel"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toEndOf="@+id/ratingLabel" />
 
             <TextView
                 android:id="@+id/commentsLabel"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/margin_custom"
                 android:text="@string/comments_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/commentsField"
-                app:layout_constraintStart_toEndOf="@+id/scoreField"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toEndOf="@+id/scoreField" />
 
             <TextView
                 android:id="@+id/commentsField"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_custom"
                 android:layout_marginEnd="@dimen/margin_custom"
-                android:layout_marginTop="@dimen/margin_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/commentsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/text" />
+                app:layout_constraintStart_toEndOf="@+id/commentsLabel" />
 
         </android.support.constraint.ConstraintLayout>
 
