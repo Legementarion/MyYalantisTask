@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyYalantisTask</string>
+    <string name="author_label">author:</string>
+    <string name="rating_label">rating:</string>
+    <string name="comments_label">comments:</string>
+    <string name="error">Error</string>
+</resources>
