@@ -9,6 +9,8 @@ interface ItemListView : MvpView {
 
     fun showProgressbar(visible: Boolean)
 
+    fun hideRefreshing()
+
     fun showResultList(list: List<News>)
 
 }

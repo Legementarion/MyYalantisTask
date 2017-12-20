@@ -7,10 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.lego.myyalantistask.repository.db.Result
+import javax.inject.Named
 
-class RequestController {
+class RequestController(@Named("serverUrl") private val redditUrl: String) {
 
-    private val redditUrl: String = "https://www.reddit.com/"
     val redditApi: RedditApi
 
     init {

@@ -14,10 +14,16 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.centerCropTransform
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
+import com.lego.myyalantistask.MainApp
+import javax.inject.Named
 
-class ItemListAdapter(val context: Context) : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
+class ItemListAdapter(@Named("serverUrl") private val redditUrl: String, val context: Context) : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
 
     private var items: List<News> = Collections.emptyList()
+
+    init {
+        MainApp.graph.inject(this)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -49,7 +55,7 @@ class ItemListAdapter(val context: Context) : RecyclerView.Adapter<ItemListAdapt
                 val builder = CustomTabsIntent.Builder()
                 builder.setToolbarColor(ContextCompat.getColor(context, R.color.gray))
                 val customTabsIntent = builder.build()
-                customTabsIntent.launchUrl(context, Uri.parse("https://www.reddit.com/" + item.url))
+                customTabsIntent.launchUrl(context, Uri.parse(redditUrl + item.url))
             })
         }
     }

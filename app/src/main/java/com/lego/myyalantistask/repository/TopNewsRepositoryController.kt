@@ -6,29 +6,25 @@ import com.lego.myyalantistask.repository.db.NewsDao
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
-class TopNewsRepositoryController(val topNewsApi: RedditApi, val newsDao: NewsDao) {
+class TopNewsRepositoryController(private val topNewsApi: RedditApi, private val newsDao: NewsDao) {
 
     fun getNews(count: Int): Observable<List<News>> {
-        return getNewsFromApi(count)
-//        Observable.concatArray(
-//                getNewsFromDb(),
-
-//        )
+        return Observable.concatArray(
+                getNewsFromDb(),
+                getNewsFromApi(count))
     }
 
     private fun getNewsFromDb(): Observable<List<News>> {
         return newsDao.getNews().filter { it.isNotEmpty() }
                 .toObservable()
-                .doOnNext {
-                }
     }
 
     private fun getNewsFromApi(count: Int): Observable<List<News>> {
         return topNewsApi.getTopNews(count)
                 .map { it -> it.data }
-//                .doOnNext {
-//                    storeNewsInDb(it)
-//                }
+                .doOnNext {
+                    storeNewsInDb(it)
+                }
     }
 
     private fun storeNewsInDb(news: List<News>) {

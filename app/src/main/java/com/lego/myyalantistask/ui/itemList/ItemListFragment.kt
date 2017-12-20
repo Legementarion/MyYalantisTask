@@ -32,6 +32,7 @@ class ItemListFragment : MvpAppCompatFragment(), ItemListView, SwipeRefreshLayou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        refreshSwipe.setOnRefreshListener(this)
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = listAdapter
@@ -59,6 +60,10 @@ class ItemListFragment : MvpAppCompatFragment(), ItemListView, SwipeRefreshLayou
 
     override fun onRefresh() {
         itemListPresenter.refreshData()
+    }
+
+    override fun hideRefreshing() {
+        refreshSwipe.isRefreshing = false
     }
 
 }

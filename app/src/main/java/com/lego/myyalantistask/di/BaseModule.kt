@@ -9,10 +9,17 @@ import com.lego.myyalantistask.repository.db.AppDataBase
 import com.lego.myyalantistask.ui.itemList.ItemListAdapter
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class BaseModule(var context: Context) {
+class BaseModule(private var context: Context) {
+
+    @Provides
+    @Named("serverUrl")
+    fun provideUrl(): String {
+        return "https://www.reddit.com/"
+    }
 
     @Provides
     @Singleton
@@ -22,7 +29,7 @@ class BaseModule(var context: Context) {
 
     @Provides
     @Singleton
-    fun provideRequestController() = RequestController().redditApi
+    fun provideRequestController(@Named("serverUrl") serverUrl: String) = RequestController(serverUrl).redditApi
 
     @Provides
     @Singleton
@@ -36,6 +43,6 @@ class BaseModule(var context: Context) {
 
     @Provides
     @Singleton
-    fun provideItemListAdapter() = ItemListAdapter(context)
+    fun provideItemListAdapter(@Named("serverUrl") serverUrl: String) = ItemListAdapter(serverUrl, context)
 
 }

@@ -19,18 +19,19 @@ class ItemListPresenter : MvpPresenter<ItemListView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         MainApp.graph.inject(this)
-
         refreshData()
     }
 
     fun refreshData() {
-
         repositoryController
                 .getNews(count)
-                .doOnSubscribe { viewState.showProgressbar(true) }
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe { viewState.showProgressbar(true) }
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { viewState.showProgressbar(false) }
+                .doOnTerminate {
+                    viewState.showProgressbar(false)
+                    viewState.hideRefreshing()
+                }
                 .subscribe({
                     viewState.showResultList(it)
                 }, {
