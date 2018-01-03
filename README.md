@@ -1,3 +1,3 @@
 # MyYalantisTask
 
-![alt tag](https://media.discordapp.net/attachments/127072941924941824/393147871190581259/Screen_Shot_2017-12-20_at_11.08.43_PM.png)
+![alt tag](https://cdn.discordapp.com/attachments/127072941924941824/398063045089427457/Screen_Shot_2018-01-03_at_12.39.28_PM.png)
