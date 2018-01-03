@@ -1,19 +1,18 @@
 package com.lego.myyalantistask.core
 
 import com.google.gson.*
-import com.lego.myyalantistask.repository.db.Result
 import java.lang.reflect.Type
 import com.google.gson.Gson
 
-class GsonDeserializer: JsonDeserializer<Result> {
+class GsonDeserializer<T> : JsonDeserializer<T> {
 
     @Throws(JsonParseException::class)
-    override fun deserialize(je: JsonElement, type: Type, jdc: JsonDeserializationContext): Result {
+    override fun deserialize(je: JsonElement, type: Type, jdc: JsonDeserializationContext): T {
         val mappings = JsonObject()
         val data = je.asJsonObject.get("data")
         val children = data.asJsonObject.get("children")
         val newData = JsonArray()
-        children.asJsonArray.forEach {  newData.add(it.asJsonObject.get("data"))}
+        children.asJsonArray.forEach { newData.add(it.asJsonObject.get("data")) }
         mappings.add("data", newData)
 
         return Gson().fromJson(mappings, type)

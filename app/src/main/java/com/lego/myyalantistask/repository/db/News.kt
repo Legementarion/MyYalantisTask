@@ -21,9 +21,6 @@ data class News(
         @ColumnInfo(name = "textHtml")
         @SerializedName("selftext_html")
         var textHtml: String? = "",
-        @ColumnInfo(name = "text")
-        @SerializedName("selftext")
-        var text: String = "",
         @ColumnInfo(name = "created")
         @SerializedName("created_utc")
         var created: Long = 0,
@@ -37,6 +34,3 @@ data class News(
 )
 
 data class Result(val data: List<News>)
-
-//created: 1513557524,
-//created_utc: 1513528724,

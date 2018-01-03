@@ -16,7 +16,7 @@ class RequestController(@Named("serverUrl") private val redditUrl: String) {
     init {
         val typeToken = object : TypeToken<Result>() {}.type
         val gson = GsonBuilder()
-                .registerTypeAdapter(typeToken, GsonDeserializer())
+                .registerTypeAdapter(typeToken, GsonDeserializer<Result>())
                 .create()
 
         val retrofit = Retrofit.Builder()

@@ -1,6 +1,6 @@
 package com.lego.myyalantistask.di
 
-import com.lego.myyalantistask.ui.itemList.ItemListAdapter
+import com.lego.myyalantistask.ui.itemList.rv.ItemListAdapter
 import com.lego.myyalantistask.ui.itemList.ItemListFragment
 import com.lego.myyalantistask.ui.itemList.ItemListPresenter
 import dagger.Component

@@ -6,7 +6,7 @@ import com.lego.myyalantistask.core.RedditApi
 import com.lego.myyalantistask.core.RequestController
 import com.lego.myyalantistask.repository.TopNewsRepositoryController
 import com.lego.myyalantistask.repository.db.AppDataBase
-import com.lego.myyalantistask.ui.itemList.ItemListAdapter
+import com.lego.myyalantistask.ui.itemList.rv.ItemListAdapter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
